@@ -1,0 +1,16 @@
+<form action="/posters/<%= @server %>">
+	<fieldset>
+		<legend>新規投稿</legend>
+		<select name="category" id="category">
+		  <option value="all" <%= 'selected="true"' if @category == "all" %>>-区分-</option>
+		  <option value="sell" <%= 'selected="true"' if @category == "sell" %>>販売</option>
+		  <option value="buy" <%= 'selected="true"' if @category == "buy" %>>買取</option>
+		  <option value="trade" <%= 'selected="true"' if @category == "trade" %>>交換</option>
+		</select>
+		<br />
+		<label>お名前： <%= text_field_tag :contributor, '', size: 20 %></label><br />
+		<label>タイトル： <%= text_field_tag :title, '', size: 30 %></label><br />
+		<label>本文：<br /> <%= text_area_tag :content, '', col:70, row: 10 %></label><br />
+		<label>削除キー： <%= password_field_tag :delete_key, '', size: 4 %></label><br />
+	</fieldset>
+</form>

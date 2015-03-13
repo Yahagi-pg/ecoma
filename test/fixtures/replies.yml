@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  poster_id: 1
+  contributor: MyString
+  posted: 2015-03-06 19:37:49
+  content: MyString
+  mac_address: MyString
+  ip_address: MyString
+
+two:
+  poster_id: 1
+  contributor: MyString
+  posted: 2015-03-06 19:37:49
+  content: MyString
+  mac_address: MyString
+  ip_address: MyString

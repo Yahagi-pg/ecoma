@@ -1,0 +1,39 @@
+<input type="hidden" id="server" value="<%= @server %>">
+
+<select name="category" id="category">
+  <option value="all" <%= 'selected="true"' if @category == "all" %>>-区分-</option>
+  <option value="sell" <%= 'selected="true"' if @category == "sell" %>>販売</option>
+  <option value="buy" <%= 'selected="true"' if @category == "buy" %>>買取</option>
+  <option value="trade" <%= 'selected="true"' if @category == "trade" %>>交換</option>
+</select>
+
+<input id="keyword" type="text" name="keyword" value="<%= @keyword %>" placeholder="検索キーワード">
+<a href="/posters/<%= @server %>/all/all" id="search"><button>検索</button></a>
+<a href="/posters/<%= @server %>"><button>検索解除</button></a>
+<a href="/posters/<%= @server %>/new">新規投稿</a>
+
+<br /><br />
+
+
+<div id="list">
+  <table border="1">
+    <tr>
+      <th class="category">区分</th>
+      <th class="title">タイトル</th>
+      <th class="contributor">投稿者</th>
+      <th class="posted">投稿日</th>
+      <th class="replies">返信数</th>
+    </tr>
+
+    <% @posters.each do |poster| %>
+      <tr>
+        <td class="category"><%= poster.category.label %></td>
+        <td class="title"><%= link_to "#{poster.title}", "/posters/#{poster.server.server}/#{poster.id}" %></td>
+        <td class="contributor"><%= poster.contributor %></td>
+        <td class="posted"><%= poster.posted.to_date.strftime("%Y/%m/%d") %></td>
+        <td class="replies"><%= poster.replies.size %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<br>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  server: lupinus
+
+two:
+  id: 2
+  server: clover
+
+three:
+  id: 3
+  server: freesia
+
+for:
+  id: 4
+  server: zinnia

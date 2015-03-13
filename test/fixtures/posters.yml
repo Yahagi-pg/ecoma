@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+s1:
+  id: 1
+  category_id: 1
+  server_id: 1
+  title: 御魂・エリーゼ　3500M
+  contributor: さんぷる１
+  posted: 2015-03-04 21:04:57
+
+s2:
+  id: 2
+  category_id: 3
+  server_id: 4
+  title: 出）びっくり靴下　求）びっくりイヤリング+500M
+  contributor: さんぷる２
+  posted: 2015-03-04 21:04:57
+s3:
+  id: 3
+  category_id: 2
+  server_id: 3
+  title: 御魂・ナナイ　値段相談
+  contributor: さんぷる3
+  posted: 2015-03-04 21:04:57
+s4:
+  id: 4
+  category_id: 1
+  server_id: 3
+  title: 絆BOX2　1800M
+  contributor: さんぷる4
+  posted: 2015-03-04 21:04:57
+s5:
+  id: 5
+  category_id: 3
+  server_id: 2
+  title: 絆BOX2　2500M
+  contributor: さんぷる5
+  posted: 2015-03-04 21:04:57
+  closed: true

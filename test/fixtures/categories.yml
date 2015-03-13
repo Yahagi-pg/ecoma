@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  category: sell
+  label: 販売
+
+two:
+  id: 2
+  category: buy
+  label: 買取
+three:
+  id: 3
+  category: trade
+  label: 交換
