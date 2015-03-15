@@ -1,9 +1,9 @@
+<%= stylesheet_link_tag "header" %>
 <div id="menu" class="cf">
 	<ul>
-		<li <%= 'class=selected_server' if @server == "lupinus" %>><a href="/posters/lupinus">ルピナス</a></li>
-		<li <%= 'class=selected_server' if @server == "clover" %>><a href="/posters/clover">クローバー</a></li>
-		<li <%= 'class=selected_server' if @server == "freesia" %>><a href="/posters/freesia">フリージア</a></li>
-		<li <%= 'class=selected_server' if @server == "zinnia" %>><a href="/posters/zinnia">ジニア</a></li>
+		<% @servers.each do |s| %>
+			<li><%= link_to "#{s.label}", "/posters/#{s.server}" %></li>
+		<% end %>
 	</ul>
 </div>
 <hr />

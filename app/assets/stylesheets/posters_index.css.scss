@@ -1,0 +1,44 @@
+// 一覧/検索画面のCSS
+// index.html
+
+body {
+	font-family: uzura;
+	overflow: hidden;
+
+	div#list {
+		height: 500px;
+		overflow-y:scroll;
+
+		table {
+			tr {
+				background-color: lavender;
+			}
+			tr.closed {
+				text-decoration: line-through;
+				background-color: gray;
+			}
+
+			.category {
+				width: 40px;
+				text-align: center;
+			}
+
+			.title {
+				width: 250px;
+			}
+
+			.contributor {
+				width: 100px;
+			}
+
+			.posted {
+				width: 90px;
+				text-align: center;
+			}
+
+			.replies {
+				text-align: right;
+			}
+		}
+	}
+}

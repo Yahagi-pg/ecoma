@@ -1,19 +1,15 @@
+<%= javascript_include_tag "posters_index" %>
+<%= stylesheet_link_tag "posters_index" %>
 <input type="hidden" id="server" value="<%= @server %>">
 
-<select name="category" id="category">
-  <option value="all" <%= 'selected="true"' if @category == "all" %>>-区分-</option>
-  <option value="sell" <%= 'selected="true"' if @category == "sell" %>>販売</option>
-  <option value="buy" <%= 'selected="true"' if @category == "buy" %>>買取</option>
-  <option value="trade" <%= 'selected="true"' if @category == "trade" %>>交換</option>
-</select>
+<%= render "/posters/categories_select" %>
 
-<input id="keyword" type="text" name="keyword" value="<%= @keyword %>" placeholder="検索キーワード">
+<%= text_field_tag :keyword, @keyword, {placeholder: "検索キーワード", id: "keyword"} %>
 <a href="/posters/<%= @server %>/all/all" id="search"><button>検索</button></a>
 <a href="/posters/<%= @server %>"><button>検索解除</button></a>
-<a href="/posters/<%= @server %>/new">新規投稿</a>
+<a href="/posters/<%= @server %>/new"><button>新規投稿</button></a>
 
 <br /><br />
-
 
 <div id="list">
   <table border="1">
@@ -26,7 +22,7 @@
     </tr>
 
     <% @posters.each do |poster| %>
-      <tr>
+      <tr <%= "class=closed" if poster.closed %>>
         <td class="category"><%= poster.category.label %></td>
         <td class="title"><%= link_to "#{poster.title}", "/posters/#{poster.server.server}/#{poster.id}" %></td>
         <td class="contributor"><%= poster.contributor %></td>

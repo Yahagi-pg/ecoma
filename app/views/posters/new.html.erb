@@ -1,16 +1,31 @@
-<form action="/posters/<%= @server %>">
-	<fieldset>
-		<legend>新規投稿</legend>
-		<select name="category" id="category">
-		  <option value="all" <%= 'selected="true"' if @category == "all" %>>-区分-</option>
-		  <option value="sell" <%= 'selected="true"' if @category == "sell" %>>販売</option>
-		  <option value="buy" <%= 'selected="true"' if @category == "buy" %>>買取</option>
-		  <option value="trade" <%= 'selected="true"' if @category == "trade" %>>交換</option>
-		</select>
-		<br />
-		<label>お名前： <%= text_field_tag :contributor, '', size: 20 %></label><br />
-		<label>タイトル： <%= text_field_tag :title, '', size: 30 %></label><br />
-		<label>本文：<br /> <%= text_area_tag :content, '', col:70, row: 10 %></label><br />
-		<label>削除キー： <%= password_field_tag :delete_key, '', size: 4 %></label><br />
-	</fieldset>
-</form>
+<p><%= @notice %></p>
+
+<%= form_tag "/posters/#{@server}", method: "post" do %>
+	<table border="1">
+		<tr>
+			<td><%= label :poster, :category, "区分 " %></td>
+			<td><%= render "/posters/categories_select" %></td>
+		</tr>
+		<tr>
+			<td><%= label :poster, :contributor, "お名前： " %></td>
+			<td><%= text_field :poster, :contributor, size: 20 %></td>
+		</tr>
+		<tr>
+			<td><%= label :poster, :title, "タイトル： " %></td>
+			<td><%= text_field :poster, :title, size: 30 %></td>
+		</tr>
+		<tr>
+			<td colspan="2"><%= label :poster, :content, "本文： " %></td>
+		</tr>
+		<tr>
+			<td colspan="2"><%= text_area :poster, :content, cols:70, rows: 10 %></td>
+		</tr>
+		<tr>
+			<td><%= label :poster, :close_key, "終了キー： " %></td>
+			<td><%= password_field :poster, :close_key, size: 4, maxlength: 4 %>※4文字</td>
+		</tr>
+		<tr>
+			<td><%= submit_tag "投稿", data:{confirm: "投稿前にもう一度内容をご確認ください\nOKを押すと投稿されます"} %></td>
+		</tr>
+	</table>
+<% end %>

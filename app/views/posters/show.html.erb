@@ -1,27 +1,39 @@
-<table>
-  <tr id="title">
+<%= stylesheet_link_tag "posters_show" %>
+<p><%= @notice %></p>
+<table id="main">
+  <tr class="title <%= ", closed" if @poster.closed %>">
     <td class="id">No.<%= @poster.id %></td>
-    <td class="main_title"><%= @poster.title %></td>
     <td class="category"><%= @poster.category.label %></td>
+    <td class="main_title"><%= @poster.title %></td>
+    <td class="close">
+    <% if @poster.closed %>
+      終了済
+    <% else %>
+      <%= form_tag "/posters/#{@server}/#{@poster.id}", method: "delete" do %>
+        <%= password_field_tag :close_key, "", maxlength: 4, size: 1 %>
+        <%= submit_tag "終了" %>
+      <% end %>
+    <% end %>
+    </td>
   </tr>
   <tr class="header">
-    <td colspan="3">
+    <td colspan="4">
       <%= @poster.contributor %>
       <%= @poster.posted.strftime '%Y/%m/%d(%a) %H:%M' %>
     </td>
   </tr>
 
   <tr class="content">
-    <td colspan="3"><%= @poster.content %></td>
+    <td colspan="4"><%= @poster.content %></td>
   </tr>
 </table>
 <br />
-<table>
+<table id="replies">
   <% @poster.replies.each_with_index do |reply, idx| %>
   <tr class="header reply_header">
     <td class="id">Rep.<%= idx + 1 %></td>
     <td class="reply_title"><%= reply.contributor %></td>
-    <td class="reply_posted"><%= reply.posted %></td>
+    <td class="reply_posted"><%= reply.posted.strftime '%Y/%m/%d %H:%M' %></td>
   </tr>
   <tr class="content">
     <td colspan="3"><%= reply.content %></td>
@@ -30,9 +42,16 @@
 </table>
 <br />
 
-<form action="/posters/<%= @poster.server.server %>/<%= @poster.id %>/reply" method="post">
-  <%= hidden_field_tag :poster_id, @poster.id %>
-  <label>お名前：<%= text_field_tag :contributor, "", size: 30 %></label><br />
-  <label>本文：<br /><%= text_area_tag :content, "", cols:70, rows: 10 %></label><br />
-  <input type="submit" value="送信">
-</form>
+<% if @poster.closed then %>
+  <p>この記事は終了しているため返信することはできません！</p>
+<% else %>
+  <%= form_tag "/posters/#{@server}/#{@poster.id}/reply", method: "post" do %>
+    <%= label :reply, :contributor, "お名前： " %>
+    <%= text_field :reply, :contributor, size: 30 %>
+    <br />
+    <%= label :reply, :content, "本文：" %><br />
+    <%= text_area :reply, :content, cols:70, rows: 10 %>
+    <br />
+    <%= submit_tag "返信" %>
+  <% end %>
+<% end %>

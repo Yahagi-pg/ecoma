@@ -5,15 +5,13 @@ class ReplyController < ApplicationController
 	def create
 		@server = params[:server]
 		reply = Reply.new reply_params
+		reply.poster_id = params[:id]
 		reply.posted = DateTime.now
-		reply.poster_id = @poster.id
 
 		if reply.save then
-			format.html {redirect_to @poster, notice: "投稿完了"}
-			format.json {render action: "show", status: :created, location: @poster}
+			redirect_to "/posters/#{@server}/#{params[:id]}"
 		else
-			format.html {render action: "show"}
-			format.json {render json: @poster.errors, status: :unprocessable_entity}
+			
 		end
 	end
 

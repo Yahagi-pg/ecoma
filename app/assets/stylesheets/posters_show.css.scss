@@ -1,0 +1,57 @@
+// 詳細画面のCSS
+// show.html
+table {
+	border: solid 2px black;
+	width: 530px;
+	tr.header {
+		background-color: gainsboro;
+	}
+	tr {
+		td {
+			border: solid 2px black;
+		}
+		td.id {
+			text-align: center;
+			width: 55px;
+		}
+		td.category {
+			text-align: center;
+			width: 40px;
+		}
+	}
+}
+
+table#main {
+	tr {
+		td.main_title {
+			width: 300px;
+		}
+	}
+	tr.title {
+		font-weight: bold;
+		background-color: lavender;
+	}
+	tr.title.closed {
+		text-decoration: line-through;
+		background-color: gray;
+		td.main_title {
+			width: 340px;
+		}
+	}
+	
+}
+	
+table#replies {	
+	tr{
+		td.reply_title {
+		width: 300px;
+		}
+		td.reply_posted {
+			width: 140px;
+		}	
+	}
+}
+
+#clear {
+	display: inline;
+}
