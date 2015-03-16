@@ -5,7 +5,7 @@ class CreatePosters < ActiveRecord::Migration
       t.string :contributor
       t.datetime :posted
       t.string :content
-      t.string :delete_key
+      t.string :close_key
       t.boolean :closed
       t.integer :server_id
       t.integer :category_id

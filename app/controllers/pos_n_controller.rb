@@ -13,7 +13,7 @@ class PosNController < ApplicationController
   		p.contributor = "てすたー" + idx.to_s
   		p.posted = rand(DateTime.parse("2000/1/1") .. DateTime.parse("2014/12/31"))
   		p.closed = i%2 == 0
-  		p.delete_key = rand(9999).to_s
+  		p.close_key = rand(9999).to_s
   		p.save
   	end
   end
